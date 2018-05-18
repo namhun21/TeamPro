@@ -18,22 +18,7 @@
         </div>
         <div class = "col s12 m8">
             <% @posts.each do |post| %>
-                <div class = "card">
-                    <div class = "card-content">
-                        <span class ="card-title"> <%= post.user.name %></span>
-                        <span> <%= post.created_at %></span>
-                        <p class="pre-line"><%= post.content %></p>
-                    </div>
-                        
-                    <div class = "card-action">
-                        <a href ="#">좋아요</a>
-                        <% if current_user.id == post.user_id%>
-                            <%= link_to "삭제", post_path(post), method: "delete", class: "right" %>
-                            <%= link_to "수정", edit_post_path(post), class: "right"%>
-                        <% end %>
-                        <a href ="#">댓글 달기</a>
-                    </div>
-                </div>
+                <%= render partial: "post", object: post%>
             <% end %>
         </div>
     </div>
