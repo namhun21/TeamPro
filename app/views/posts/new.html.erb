@@ -3,7 +3,11 @@
     <div class="card col s12">
       <div class="card-content">
         <div class="card-title">새 글 작성하기</div>
-        <%= form_tag posts_path do %>
+        <%= form_tag posts_path, multipart: true do %>
+          <div class ="input-field">
+            <%= file_field_tag :image%>
+          </div>
+        
           <div class="input-field">
               <%= text_area_tag :content, nil, class: "materialize-textarea", placeholder: "댓글을 달아주세요" %>
           </div>

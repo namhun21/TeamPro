@@ -14,6 +14,11 @@
                 <%end%>
             <% end %>
         <% end %>
+        <div class = "card-image">
+            <% if post.image.url %>
+                <img src ="<%= post.image.url%>">
+            <%end%>
+        </div>
         <p class="pre-line"><%= post.content %></p>
     </div>
                         
