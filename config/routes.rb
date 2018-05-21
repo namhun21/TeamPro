@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root 'posts#index'
-  resources :posts, except: [:show] do
+  devise_for :users 
+  root 'posts#index'  # 처음화면
+  resources :posts, except: [:show] do  #상세보기 제외한 나머지 기능들 구현
     post "/like", to: "likes#like_toggle"
     resources :comments, only: [:create, :destroy]
   end

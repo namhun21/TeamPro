@@ -10,10 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require rails-ujs
 //= require activestorage
 //= require materialize-sprockets
 //= require_tree .
+
 
 $(document).ready(function(){
     $(".button-collapse").sideNav();

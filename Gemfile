@@ -5,15 +5,15 @@ ruby '2.4.1'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'devise', git: 'https://github.com/plataformatec/devise.git'
+gem 'carrierwave' #이미지 업로드를 위해
+gem 'mini_magick' #업로드 하는 이미지 파일 조정하기위해
+gem 'devise', git: 'https://github.com/plataformatec/devise.git' 
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
-gem 'materialize-sass'
+gem 'materialize-sass' #materialize 기능을 사용하기 위해
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

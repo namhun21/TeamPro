@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project</title>
+    <title>Picture Gallary</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-   <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">   
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
   </head>
 
   <body>
       <nav>
       <div class="nav-wrapper">
-        <a href="/" class="brand-logo">Project</a>
+        <a href="/" class="brand-logo">Picture Gallary</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="/posts">Posts</a></li>
+          <li><a href="/posts">Posts</a></li> 
           <% if user_signed_in? %>
           <li><%= current_user.name%></li>
+          <li><a href= "/users/edit"> Edit </a></li>
           <li> <%= link_to 'Sign out', destroy_user_session_path, method: 'delete'%></li>
           <% else %>
           <li><a href="/users/sign_in">Sign in</a></li>
