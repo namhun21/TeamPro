@@ -1,25 +1,30 @@
-<div class = "card">
+<div class = "card post">
     <div class = "card-content">
+        <% if post.user.avatar %>
+            <img class = "circle thumbnail" src= "<%= post.user.avatar.thumb.url %>">
+        <%end%>
         <span class ="card-title"> <%= post.user.name %></span>
         <span> <%= post.created_at %></span>
-        <% if user_signed_in? && current_user != post.user %>
-            <% if current_user.followings.include?(post.user) %>
-                <%= form_tag follow_path(post.user.id), method: :delete, class: "right" do %>
-                    <button class ="btn">팔로우 취소 </button>
+        <div class = "content">
+            <% if user_signed_in? && current_user != post.user %>
+                <% if current_user.followings.include?(post.user) %>
+                    <%= form_tag follow_path(post.user.id), method: :delete, class: "right" do %>
+                        <button class ="btn">팔로우 취소 </button>
+                    <% end %>
+                <%else%>
+                    <%= form_tag follows_path, method: :post, class: "right" do %>
+                        <input type = "hidden" name = "followed_id" value = "<%= post.user.id %>">
+                        <button class = "btn">팔로우 </button>
+                    <%end%>
                 <% end %>
-            <%else%>
-                <%= form_tag follows_path, method: :post, class: "right" do %>
-                    <input type = "hidden" name = "followed_id" value = "<%= post.user.id %>">
-                    <button class = "btn">팔로우 </button>
-                <%end%>
             <% end %>
-        <% end %>
-        <div class = "card-image">
-            <% if post.image.url %>
-                <img src ="<%= post.image.url%>">
-            <%end%>
+            <div class = "card-image">
+                <% if post.image.url %>
+                    <img src ="<%= post.image.url%>">
+                <%end%>
+            </div>
+            <p class="pre-line"><%= post.content %></p>
         </div>
-        <p class="pre-line"><%= post.content %></p>
     </div>
                         
     <div class = "card-action">

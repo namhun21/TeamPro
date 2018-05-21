@@ -5,3 +5,14 @@
 .pre-line {
     white-space: pre-line;
 }
+
+.post{
+    .card-content{
+        .thumbnail {
+            vertical-align: middle;
+        }
+        .content{
+            margin: 20px 0;
+        }
+    }
+}
