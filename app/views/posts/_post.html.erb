@@ -1,4 +1,4 @@
-<div class = "card post">
+<div class = "card post" data-post-id ="<%= post.id %>">
     <div class = "card-content">
         <% if post.user.avatar %>
             <img class = "circle thumbnail" src= "<%= post.user.avatar.thumb.url %>">
@@ -12,18 +12,19 @@
                         <button class ="btn">팔로우 취소 </button>
                     <% end %>
                 <%else%>
-                    <%= form_tag follows_path, method: :post, class: "right" do %>
-                        <input type = "hidden" name = "followed_id" value = "<%= post.user.id %>">
+                    <%= form_tag follows_path, class: "right" do %>
+                        <input type = "hidden" name = "followed_id" value = "<%= post.user.id %>" />
                         <button class = "btn">팔로우 </button>
                     <%end%>
                 <% end %>
             <% end %>
+            <p class="pre-line"><%= post.content %></p>
+            
             <div class = "card-image">
                 <% if post.image.url %>
-                    <img src ="<%= post.image.url%>">
+                    <img src ="<%= post.image.url%>"/>
                 <%end%>
             </div>
-            <p class="pre-line"><%= post.content %></p>
         </div>
     </div>
                         
