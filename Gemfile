@@ -11,6 +11,7 @@ gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'kaminari'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'materialize-sass' #materialize 기능을 사용하기 위해

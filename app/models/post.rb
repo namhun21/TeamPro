@@ -4,4 +4,5 @@ class Post < ApplicationRecord
     has_many :liked_users, through: :likes, source: :user
     has_many :comments
     mount_uploader :image, PostImageUploader
+    paginates_per 5
 end
