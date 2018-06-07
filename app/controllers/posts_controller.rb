@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   
   def update
     @post.content = params[:content]
+    @post.image   = params[:image] if params[:image].present?
     
     if @post.save
       redirect_to root_path
@@ -38,10 +39,18 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
   
+  def mypage
+      @mypages = Post.where(user_id: current_user.id).order('created_at desc')
+      @mypage_count = current_user.posts.length
+  end
+  
   private
   
   def check_ownership
     @post = Post.find_by(id: params[:id])
     redirect_to root_path if @post.user_id != current_user.id
   end
+  
+    
+  
 end
