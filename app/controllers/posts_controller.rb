@@ -1,10 +1,17 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   before_action :check_ownership, only: [:edit, :update, :destroy]
   
   def index
     @posts = Post.order('created_at desc').page params[:page]
     @posts_count = current_user.posts.length
+  end
+  
+  def show
+    @shows = Post.order('created_at desc').page params[:page]
+    if user_signed_in?
+      redirect_to posts_path
+    end
   end
   
   def new
@@ -40,8 +47,9 @@ class PostsController < ApplicationController
   end
   
   def mypage
-      @mypages = Post.where(user_id: current_user.id).order('created_at desc')
+      @mypages = Post.where(user_id: [current_user.id] + current_user.followings.ids).order('created_at desc')
       @mypage_count = current_user.posts.length
+      
   end
   
   private
