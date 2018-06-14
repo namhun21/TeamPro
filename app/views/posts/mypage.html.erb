@@ -23,6 +23,10 @@
             <% @mypages.each do |m| %>
                 <%= render partial: "post", object: m%>
             <% end %>
+            <p>내가 팔로우한 글</p>
+            <% @follows.each do |f| %>
+                <%= render partial: "post", object: f%>
+            <% end %>
         </div>
     </div>
 </div>

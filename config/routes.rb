@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users 
   root 'posts#show'    #'posts#index'  처음화면  
   get 'posts/mypage'
-  
+  get 'posts/showFollow'
  
   
   resources :posts, except: [:show] do  #상세보기 제외한 나머지 기능들 구현

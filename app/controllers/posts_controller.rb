@@ -47,8 +47,9 @@ class PostsController < ApplicationController
   end
   
   def mypage
-      @mypages = Post.where(user_id: [current_user.id] + current_user.followings.ids).order('created_at desc')
+      @mypages = Post.where(user_id: current_user.id).order('created_at desc')
       @mypage_count = current_user.posts.length
+      @follows = Post.where(user_id: current_user.followings.ids).order('created_at desc')
       
   end
   
