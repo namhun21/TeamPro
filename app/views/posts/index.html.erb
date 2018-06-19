@@ -1,28 +1,76 @@
-<div class ="container">
-    <div class = "row">
-        <div class = "col s12 m4">
-            <div class = "card">
-                <div class = "card-image">
-                    <img src = "<%= current_user.avatar.url %>" />
-                </div>
-                <div class = "card-content">
-                    <div class = "card-title"><%=current_user.name %></div>
-                    <p>이메일 : <%= current_user.email %></p>
-                    <p>올린 글 개수 : <%= @posts_count %></p>
-                    <p>팔로워 : <%= current_user.followers.length %></p>
-                    <p>팔로잉 : <%= current_user.followings.length %></p>
-                    
-                    <%= link_to new_post_path do %>
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <img src = "<%= current_user.avatar.url %>" style="width:45%;" class="w3-round"><br><br>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>User name : <%= current_user.name %></a> 
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>Email  : <%= current_user.email %></a>
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-image fa-fw w3-margin-right"></i>Post : <%= @posts_count %></a> 
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>Follower : <%= current_user.followers.length %></a> 
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>Folling : <%= current_user.followings.length %></a>
+      <%= link_to new_post_path do %>
                         <button class = "btn"> 글 쓰기</button>
                     <% end %>
-                </div>
-            </div>
-        </div>
-        <div class = "col s12 m8">
+  </div>
+  
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:500px; margin-right:400px">
+
+  <!-- Header -->
+  <header id="portfolio">
+    <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container">
+    <h1><b>My Picture</b></h1>
+    </div>
+  </header>
+  
+  <!-- First Photo Grid-->
+         <div class = "col s12 m6">
             <% @posts.each do |post| %>
                 <%= render partial: "post", object: post%>
             <% end %>
             <%= paginate @posts %>
         </div>
-    </div>
+  
+
+<!-- End page content -->
 </div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
