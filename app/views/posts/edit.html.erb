@@ -3,8 +3,11 @@
     <div class="card col s12">
       <div class="card-content">
         <div class="card-title">수정하기</div>
-        <%= form_tag post_path(@post), method: "patch" do %>
-          <input type ="hidden" name="id" value="<%=@post.id%>">
+        <%= form_tag post_path(@post), method: "patch", multipart: true do %>
+          <input type ="hidden" name="id" value="<%=@post.content%>">
+          <div class = "input-field">
+            <%= file_field_tag :image %>
+          </div>
           <div class="input-field">
               <%= text_area_tag :content, @post.content, class: "materialize-textarea", placeholder: "댓글을 달아주세요" %>
           </div>
