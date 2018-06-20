@@ -25,9 +25,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-image fa-fw w3-margin-right"></i>Post : <%= @posts_count %></a> 
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw w3-margin-right"></i>Follower : <%= current_user.followers.length %></a> 
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw w3-margin-right"></i>Following : <%= current_user.followings.length %></a>
-    <%= link_to new_post_path do %>
-    <button class = "btn"> 글 쓰기</button>
-    <% end %>
+    <a href ="/posts/new" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><button class="btn">Write</button>
+  
   </div>
   
 </nav>
