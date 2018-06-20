@@ -29,8 +29,8 @@ class PostsController < ApplicationController
   def edit
   end
   
-  def update
-    @post.content = params[:content]
+  def update 
+    @post.content = params[:content] #데이터베이스에 저장된 해당글을 수정할껀지 체크
     @post.image   = params[:image] if params[:image].present?
     
     if @post.save
@@ -56,8 +56,8 @@ class PostsController < ApplicationController
   private
   
   def check_ownership
-    @post = Post.find_by(id: params[:id])
-    redirect_to root_path if @post.user_id != current_user.id
+    @post = Post.find_by(id: params[:id]) #데이터베이스에 저장된 해당글을 수정할껀지 체크
+    redirect_to root_path if @post.user_id != current_user.id #뷰에서 히든값을 바꿔버리면 남의글을 수정 삭제 가능하므로 
   end
   
     
