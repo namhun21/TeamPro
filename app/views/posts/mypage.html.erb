@@ -34,20 +34,56 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
 
 </nav>
-  <div class ="container">
-    <div class = "row">
-        <div class = "col s12 m2">
 
-        </div>
-        <div class = "col s12 m10">
-            <p>내가 쓴글</p>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:500px; margin-right:400px">
+
+  <!-- Header -->
+  <header id="portfolio">
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container">
+    <h1><b>My Posts</b></h1>
+    </div>
+  </header>
+  
+  <!-- First Photo Grid-->
+        <div class = "col s12 m6">
             <% @mypages.each do |m| %>
                 <%= render partial: "post", object: m%>
             <% end %>
-            <p>내가 팔로우한 글</p>
-            <% @follows.each do |f| %>
+        </div>
+        
+    <header id="portfolio">
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container">
+    <h2><b>Following's Posts</b></h2>
+    </div>
+  </header> 
+       <div class = "col s12 m6">
+           <% @follows.each do |f| %>
                 <%= render partial: "post", object: f%>
             <% end %>
         </div>
-    </div>
+        
+  
+<!-- End page content -->
 </div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
