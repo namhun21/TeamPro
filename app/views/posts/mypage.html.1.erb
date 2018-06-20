@@ -23,10 +23,12 @@
             <% @mypages.each do |m| %>
                 <%= render partial: "post", object: m%>
             <% end %>
+            <%= paginate @posts %>
             <p>내가 팔로우한 글</p>
             <% @follows.each do |f| %>
                 <%= render partial: "post", object: f%>
             <% end %>
+            <%= paginate @posts %>
         </div>
     </div>
 </div>
