@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class = "card post" data-post-id ="<%= post.id %>">
     <div class = "card-content">
         <% if post.user.avatar %>
@@ -31,8 +32,10 @@
     <div class = "card-action">
         <%= post.likes.size %> 명이 좋아합니다.
         <% if current_user.is_like?(post) %>
+            <i class="fa fa-thumbs-up"></i>
             <%= link_to "좋아요 취소", post_like_path(post), method: "post"%>
         <%else%>
+            <i class="fa fa-thumbs-up"></i>
             <%= link_to "좋아요", post_like_path(post), method: "post"%>
         <%end%>
         <% if current_user.id == post.user_id%>
